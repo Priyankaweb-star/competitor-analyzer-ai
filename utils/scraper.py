@@ -31,7 +31,7 @@ def is_company_homepage(result):
         "stackoverflow.com","discord.com","venturebeat.com", "wired.com", "theverge.com", "nytimes.com","cnn.com", 
         "bbc.com", "businessinsider.com","hashnode.com", "substack.com", "towardsdatascience.com","forem.com",
         "inc42.com","erpublications.com","journals.lww.com","ijrpr.com","bestdigitaltoolsmentor.com",
-        "globenewswire.com","martech360.com","lpsonline.sas.upenn.edu"
+        "globenewswire.com","martech360.com","lpsonline.sas.upenn.edu","nb-data.com"
     ]
     if any(bad in domain for bad in block_domains):
         return False
