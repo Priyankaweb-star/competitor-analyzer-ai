@@ -28,11 +28,10 @@ def rank_companies(user_description, user_keywords, scraped_data, top_n=5):
             "keywords": item["keywords"],
             "score": score
         })
-    for comp in sorted(scores, key=lambda x: x["score"], reverse=True):
-        print(f"{comp['company_name']} → {comp['score']:.4f}")
+    #for comp in sorted(scores, key=lambda x: x["score"], reverse=True):
+        #print(f"{comp['company_name']} → {comp['score']:.4f}")
 
     return sorted(scores, key=lambda x: x["score"], reverse=True)[:top_n]
-
 
 '''from sentence_transformers import SentenceTransformer
 from sklearn.metrics.pairwise import cosine_similarity
