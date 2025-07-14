@@ -20,11 +20,14 @@ def search_competitor_urls(description, keywords, max_results=100):
 
 # utils/web_search.py
 import requests
+import random
 
-SERPER_API_KEY = ""  #write your serper api key
+SERPER_API_KEY = "writre your serper api key"
 
 def search_competitor_urls(description, keywords, max_results=10):
-    query = f"{description} {' '.join(keywords)} "#site:.com -blog -list -review -reddit -medium -quora -hubspot"
+    fuzz = random.choice(["", "AI", "latest", "product", "software", "new", "platform","tool","company",'organization'])
+    query = f"{description} {' '.join(keywords)} {fuzz}"
+    #query = f"{description} {' '.join(keywords)} "
 
     
     headers = {
