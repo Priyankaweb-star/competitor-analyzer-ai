@@ -59,6 +59,26 @@ if submitted:
             if data:
                 scraped_data.append(data)
             progress.progress((i + 1) / len(results))
+        
+        MAX_RETRIES = 5
+        retry_count = 0
+
+        while len(scraped_data) < 5 and retry_count < MAX_RETRIES:
+            st.warning(f"Only {len(scraped_data)} valid competitors found. Retrying... (Attempt {retry_count + 1})")
+            
+            extra_results = get_enough_companies(description, keywords, min_required=5)
+            
+            for result in extra_results:
+                if result["url"] not in [x["url"] for x in results]:
+                    results.append(result)
+                    data = scrape_website(result["url"])
+                    if data:
+                        scraped_data.append(data)
+                
+                if len(scraped_data) >= 5:
+                    break  # ✅ Enough competitors found, no more retry needed
+
+            retry_count += 1
 
         if not scraped_data:
             st.error("❌ No valid competitors found.")
